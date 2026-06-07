@@ -61,6 +61,11 @@ class TeableApiClient {
         return response.data;
     }
 
+    async deleteRecord(tableId: string, recordId: string) {
+        const response = await this.client.delete(`/table/${tableId}/record/${recordId}`);
+        return response.data;
+    }
+
     async listViews(tableId: string) {
         const response = await this.client.get(`/table/${tableId}/view`);
         return response.data;

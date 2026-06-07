@@ -22,6 +22,8 @@ This MCP server exposes **26 tools** to LLMs, organized into the following categ
 
 *   **`query_teable`**: Query records from a table with support for filtering, sorting, limiting, and view-scoped results.
 *   **`get_record`**: Retrieve a single record by its ID.
+*   **`create_record`**: Create a new record in a table with specified field values.
+*   **`delete_record`**: Permanently delete a record (all data will be lost). This operation is irreversible.
 *   **`get_record_history`**: Access the full change history of a record.
 *   **`list_spaces`**: List all spaces accessible to the user.
 *   **`list_bases`**: List all bases within a specific space.

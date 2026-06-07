@@ -39,6 +39,14 @@ export async function handleToolCall(name: string, args: any, teableClient: Teab
                 };
             }
 
+            case 'delete_record': {
+                const { tableId, recordId } = args as { tableId: string; recordId: string };
+                const data = await teableClient.deleteRecord(tableId, recordId);
+                return {
+                    content: [{ type: 'text' as const, text: JSON.stringify(data, null, 2) }],
+                };
+            }
+
             case 'create_record': {
                 const { tableId, fields } = args as CreateRecordArgs;
                 const parsedFields = JSON.parse(fields);

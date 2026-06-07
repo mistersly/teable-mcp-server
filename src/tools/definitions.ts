@@ -21,6 +21,14 @@ export const TOOLS = [
         },
     },
     {
+        name: "delete_record",
+        description: "Permanently delete a record (all data will be lost). This operation is irreversible.",
+        inputSchema: {
+            tableId: z.string().describe("The Teable Table ID"),
+            recordId: z.string().describe("The record ID to delete"),
+        },
+    },
+    {
         name: "create_record",
         description: "Create a new record in a table",
         inputSchema: {
