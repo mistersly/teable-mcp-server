@@ -49,7 +49,12 @@ export async function handleToolCall(name: string, args: any, teableClient: Teab
 
             case 'create_record': {
                 const { tableId, fields } = args as CreateRecordArgs;
-                const parsedFields = JSON.parse(fields);
+                let parsedFields: any;
+                try {
+                    parsedFields = JSON.parse(fields);
+                } catch (e: any) {
+                    throw new McpError(ErrorCode.InvalidParams, `Invalid JSON format in 'fields': ${e.message}`);
+                }
                 const data = await teableClient.createRecord(tableId, parsedFields);
                 return {
                     content: [{ type: 'text' as const, text: JSON.stringify(data, null, 2) }],
@@ -58,7 +63,12 @@ export async function handleToolCall(name: string, args: any, teableClient: Teab
 
             case 'update_record': {
                 const { tableId, recordId, fields } = args as UpdateRecordArgs;
-                const parsedFields = JSON.parse(fields);
+                let parsedFields: any;
+                try {
+                    parsedFields = JSON.parse(fields);
+                } catch (e: any) {
+                    throw new McpError(ErrorCode.InvalidParams, `Invalid JSON format in 'fields': ${e.message}`);
+                }
                 const data = await teableClient.updateRecord(tableId, recordId, parsedFields);
                 return {
                     content: [{ type: 'text' as const, text: JSON.stringify(data, null, 2) }],
