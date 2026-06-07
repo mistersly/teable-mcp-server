@@ -62,6 +62,12 @@ export interface CreateRecordArgs {
     fields: string; // JSON string, parsed in handler
 }
 
+export interface UpdateRecordArgs {
+    tableId: string;
+    recordId: string;
+    fields: string; // JSON string, parsed in handler
+}
+
 export interface GetFieldDependencyGraphArgs {
     tableId: string;
 }

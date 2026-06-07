@@ -69,6 +69,14 @@ class TeableApiClient {
         return response.data;
     }
 
+    async updateRecord(tableId: string, recordId: string, fields: Record<string, any>) {
+        const response = await this.client.patch(`/table/${tableId}/record/${recordId}`, {
+            fieldKeyType: 'name',
+            fields,
+        });
+        return response.data;
+    }
+
     async listViews(tableId: string) {
         const response = await this.client.get(`/table/${tableId}/view`);
         return response.data;

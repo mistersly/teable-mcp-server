@@ -1,6 +1,6 @@
 import { ErrorCode, McpError } from "@modelcontextprotocol/sdk/types.js";
 import { TeableApiClient } from "../teable-client.js";
-import { isValidQueryTeableArgs, CommentOnRecordArgs, CreateFieldArgs, UpdateFieldArgs, CreateViewArgs, UpdateViewArgs, GetFieldDependencyGraphArgs, AnalyzeFieldImpactArgs, CreateRecordArgs } from "../types.js";
+import { isValidQueryTeableArgs, CommentOnRecordArgs, CreateFieldArgs, UpdateFieldArgs, CreateViewArgs, UpdateViewArgs, GetFieldDependencyGraphArgs, AnalyzeFieldImpactArgs, CreateRecordArgs, UpdateRecordArgs } from "../types.js";
 import { buildDependencyGraph, generateMermaidDiagram, analyzeFieldImpact, getTransitiveClosure } from "../utils/dependency.js";
 
 export async function handleToolCall(name: string, args: any, teableClient: TeableApiClient) {
@@ -51,6 +51,15 @@ export async function handleToolCall(name: string, args: any, teableClient: Teab
                 const { tableId, fields } = args as CreateRecordArgs;
                 const parsedFields = JSON.parse(fields);
                 const data = await teableClient.createRecord(tableId, parsedFields);
+                return {
+                    content: [{ type: 'text' as const, text: JSON.stringify(data, null, 2) }],
+                };
+            }
+
+            case 'update_record': {
+                const { tableId, recordId, fields } = args as UpdateRecordArgs;
+                const parsedFields = JSON.parse(fields);
+                const data = await teableClient.updateRecord(tableId, recordId, parsedFields);
                 return {
                     content: [{ type: 'text' as const, text: JSON.stringify(data, null, 2) }],
                 };

@@ -37,6 +37,15 @@ export const TOOLS = [
         },
     },
     {
+        name: "update_record",
+        description: "Update an existing record in a table",
+        inputSchema: {
+            tableId: z.string().describe("The Teable Table ID"),
+            recordId: z.string().describe("The record ID to update"),
+            fields: z.string().describe("Record fields to update as JSON string using field names: { \"FieldName\": value, ... }"),
+        },
+    },
+    {
         name: "list_views",
         description: "List views in a specific table",
         inputSchema: {
