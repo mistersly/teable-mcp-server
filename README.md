@@ -4,10 +4,6 @@ A **Model Context Protocol (MCP)** server that connects **Teable** — the super
 
 This server enables AI agents to seamlessly query records, explore schema structures (spaces, bases, tables, views), and retrieve data from your Teable instance using natural language. It acts as a bridge, empowering your AI to interact with your data dynamically and intelligently.
 
-### ✨ New in This Update
-
-*   **`update_record`**: Update existing records by ID with specified field values (newly added)
-
 ## 🌟 What is Teable?
 
 [Teable](https://teable.io) is a next-generation, open-source, no-code database built on Postgres. It combines the ease of use of a spreadsheet with the power of a relational database.
