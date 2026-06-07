@@ -72,7 +72,9 @@ class TeableApiClient {
     async updateRecord(tableId: string, recordId: string, fields: Record<string, any>) {
         const response = await this.client.patch(`/table/${tableId}/record/${recordId}`, {
             fieldKeyType: 'name',
-            fields,
+            record: {
+                fields,
+            },
         });
         return response.data;
     }
