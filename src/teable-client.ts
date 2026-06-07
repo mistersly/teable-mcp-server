@@ -57,7 +57,10 @@ class TeableApiClient {
     }
 
     async createRecord(tableId: string, fields: Record<string, any>) {
-        const response = await this.client.post(`/table/${tableId}/record`, { records: [{ fields }] });
+        const response = await this.client.post(`/table/${tableId}/record`, {
+            fieldKeyType: 'name',
+            records: [{ fields }],
+        });
         return response.data;
     }
 

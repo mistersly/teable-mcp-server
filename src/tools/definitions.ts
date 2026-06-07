@@ -33,7 +33,7 @@ export const TOOLS = [
         description: "Create a new record in a table",
         inputSchema: {
             tableId: z.string().describe("The Teable Table ID"),
-            fields: z.string().describe("Record fields as JSON string: { fieldId: value, ... }"),
+            fields: z.string().describe("Record fields as JSON string using field names: { \"FieldName\": value, ... }"),
         },
     },
     {
