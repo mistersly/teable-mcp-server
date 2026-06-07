@@ -57,6 +57,11 @@ export interface UpdateViewArgs {
     sort?: string;   // JSON string, parsed in handler
 }
 
+export interface CreateRecordArgs {
+    tableId: string;
+    fields: string; // JSON string, parsed in handler
+}
+
 export interface GetFieldDependencyGraphArgs {
     tableId: string;
 }

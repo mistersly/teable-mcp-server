@@ -56,6 +56,11 @@ class TeableApiClient {
         return response.data;
     }
 
+    async createRecord(tableId: string, fields: Record<string, any>) {
+        const response = await this.client.post(`/table/${tableId}/record`, { fields });
+        return response.data;
+    }
+
     async listViews(tableId: string) {
         const response = await this.client.get(`/table/${tableId}/view`);
         return response.data;

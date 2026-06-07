@@ -21,6 +21,14 @@ export const TOOLS = [
         },
     },
     {
+        name: "create_record",
+        description: "Create a new record in a table",
+        inputSchema: {
+            tableId: z.string().describe("The Teable Table ID"),
+            fields: z.string().describe("Record fields as JSON string: { fieldId: value, ... }"),
+        },
+    },
+    {
         name: "list_views",
         description: "List views in a specific table",
         inputSchema: {
